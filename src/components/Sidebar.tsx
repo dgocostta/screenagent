@@ -2,71 +2,102 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, ShoppingCart, MessageSquare, Settings, LogOut, Package, ShieldCheck } from "lucide-react";
+import { 
+  LayoutGrid, Users, BarChart3, MessageSquare, ListTodo, GitBranch,
+  Package, Tv, FolderClosed, Play, Monitor,
+  Contact2, MapPin, UserCircle2, ShieldHalf, LayoutPanelLeft, Settings
+} from "lucide-react";
 
-const menuItems = [
-  { icon: LayoutDashboard, label: "Dashboard", href: "/" },
-  { icon: Package, label: "Product Catalog", href: "/catalog" },
-  { icon: MessageSquare, label: "AI Agents", href: "/agent/mr-screen" },
-  { icon: ShoppingCart, label: "Orders", href: "/orders" },
-  { icon: Settings, label: "Settings", href: "/settings" },
+const navGroups = [
+  {
+    title: "AI AGENTS",
+    items: [
+      { icon: Users, label: "Agents", href: "/agent/mr-screen" },
+      { icon: BarChart3, label: "Performance", href: "/performance" },
+      { icon: MessageSquare, label: "Conversations", href: "/conversations" },
+      { icon: ListTodo, label: "Tasks", href: "/tasks" },
+      { icon: GitBranch, label: "Workflows", href: "/workflows" },
+    ]
+  },
+  {
+    title: "CONTENT & PRODUCTS",
+    items: [
+      { icon: Package, label: "Product Catalog", href: "/catalog" },
+      { icon: Tv, label: "TV Signage", href: "/signage" },
+      { icon: FolderClosed, label: "Media Library", href: "/media" },
+      { icon: Play, label: "Playlists", href: "/playlists" },
+      { icon: Monitor, label: "Displays", href: "/displays" },
+    ]
+  },
+  {
+    title: "CLIENTS & CONFIG",
+    items: [
+      { icon: Contact2, label: "Clients", href: "/clients" },
+      { icon: MapPin, label: "Locations", href: "/locations" },
+      { icon: UserCircle2, label: "Users", href: "/users" },
+      { icon: ShieldHalf, label: "Roles & Permissions", href: "/roles" },
+      { icon: LayoutPanelLeft, label: "Integrations", href: "/integrations" },
+      { icon: Settings, label: "Settings", href: "/settings" },
+    ]
+  }
 ];
 
 export function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <div className="flex flex-col h-screen w-72 bg-[#09090b] text-zinc-400 border-r border-white/5 p-8">
-      <div className="flex items-center gap-3 mb-12 group cursor-pointer px-2">
-        <div className="w-10 h-10 rounded-xl bg-orange-600 flex items-center justify-center shadow-lg shadow-orange-600/20 group-hover:scale-110 transition-transform duration-300">
-          <ShieldCheck className="w-6 h-6 text-white" />
-        </div>
-        <div className="flex flex-col">
-          <h1 className="text-lg font-black tracking-tighter text-white uppercase italic">ScreenAgent</h1>
-          <span className="text-[10px] font-bold text-orange-500/80 uppercase tracking-[0.2em] -mt-1 ml-0.5">Enterprise</span>
+    <aside className="w-64 h-screen bg-[#09090b] flex flex-col border-r border-white/5 shrink-0 overflow-hidden">
+      <div className="p-6 mb-2">
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 bg-[#FF6B00] flex items-center justify-center rounded-lg shadow-lg shadow-orange-600/20">
+            <span className="text-white font-black text-xl italic tracking-tighter">M</span>
+          </div>
+          <div className="flex flex-col">
+            <h1 className="text-xs font-black tracking-widest text-white uppercase italic leading-none">MR SCREEN</h1>
+          </div>
         </div>
       </div>
-      
-      <nav className="space-y-2 flex-1">
-        {menuItems.map((item) => {
-          const isActive = pathname === item.href;
-          return (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`
-                flex items-center gap-4 px-4 py-3.5 rounded-2xl text-sm font-semibold transition-all duration-200 group
-                ${isActive 
-                  ? "bg-orange-600 text-white shadow-lg shadow-orange-600/20" 
-                  : "hover:bg-white/5 hover:text-white"
-                }
-              `}
-            >
-              <item.icon className={`w-5 h-5 ${isActive ? "text-white" : "text-zinc-500 group-hover:text-orange-500"} transition-colors`} />
-              {item.label}
-            </Link>
-          );
-        })}
-      </nav>
 
-      <div className="mt-auto space-y-6">
-        <div className="bg-gradient-to-br from-zinc-900 to-[#121214] border border-white/5 p-6 rounded-3xl space-y-3 relative overflow-hidden">
-          <div className="relative z-10 space-y-1">
-            <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-500">Subscription</p>
-            <p className="text-sm font-bold text-white tracking-tight">Pro Plan</p>
-          </div>
-          <div className="relative z-10 w-full h-1.5 bg-zinc-800 rounded-full overflow-hidden">
-            <div className="h-full w-2/3 bg-orange-600 rounded-full shadow-[0_0_8px_rgba(234,88,12,0.5)]" />
-          </div>
+      <div className="flex-1 px-4 space-y-7 pb-10 overflow-y-auto">
+        <div>
+          <Link href="/" className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-[#FF6B00] bg-[#FF6B00]/10 font-semibold text-xs transition-all">
+            <LayoutGrid className="w-4 h-4" />
+            Overview
+          </Link>
         </div>
 
-        <button className="flex items-center gap-4 px-4 py-3 w-full text-sm font-bold text-zinc-500 hover:text-red-400 transition-colors group">
-          <div className="w-8 h-8 rounded-lg bg-zinc-900 border border-white/5 flex items-center justify-center group-hover:bg-red-500/10 group-hover:border-red-500/20 transition-all">
-             <LogOut className="w-4 h-4" />
+        {navGroups.map((group) => (
+          <div key={group.title} className="space-y-1">
+            <h3 className="px-4 text-[9px] font-black text-zinc-500 tracking-[0.2em] mb-2 uppercase">{group.title}</h3>
+            {group.items.map((item) => {
+              const isActive = pathname === item.href;
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`flex items-center gap-3 px-4 py-2 rounded-lg text-[11px] font-semibold transition-colors ${isActive ? 'text-white bg-white/5' : 'text-zinc-500 hover:text-white hover:bg-white/5'}`}
+                >
+                  <item.icon className={`w-3.5 h-3.5 ${isActive ? 'text-[#FF6B00]' : ''}`} />
+                  {item.label}
+                </Link>
+              );
+            })}
           </div>
-          Log out
+        ))}
+      </div>
+
+      <div className="p-4 space-y-1 mt-auto border-t border-white/5 bg-[#09090b]">
+        <div className="flex items-center justify-between px-4 py-2 rounded-lg bg-[#121214] border border-white/5 mb-2">
+          <div className="flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.5)]"></span>
+            <span className="text-[9px] font-bold text-zinc-400">All Systems Operational</span>
+          </div>
+        </div>
+        <button className="flex items-center gap-3 px-4 py-2 text-[10px] font-bold text-zinc-500 hover:text-white transition-colors w-full">
+          <LayoutPanelLeft className="w-3.5 h-3.5 rotate-180" />
+          Collapse
         </button>
       </div>
-    </div>
+    </aside>
   );
 }
