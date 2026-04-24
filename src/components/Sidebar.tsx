@@ -61,7 +61,7 @@ export function Sidebar() {
 
       <div className="flex-1 px-6 space-y-9 pb-10 overflow-y-auto">
         <div>
-          <Link href="/" className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-[#FF6B00] bg-[#FF6B00]/10 font-bold text-sm transition-all border border-orange-500/10">
+          <Link href="/" className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-[#FF6B00] bg-[#FF6B00]/10 font-bold text-sm border border-orange-500/10 transition-all">
             <LayoutGrid className="w-4 h-4" />
             Overview
           </Link>
