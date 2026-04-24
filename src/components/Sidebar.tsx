@@ -48,37 +48,35 @@ export function Sidebar() {
 
   return (
     <aside className="w-64 h-screen bg-[#09090b] flex flex-col border-r border-white/5 shrink-0 overflow-hidden font-sans">
-      <div className="p-6 mb-4 flex items-center gap-3">
-        <div className="w-10 h-10 bg-[#FF6B00] flex items-center justify-center rounded-lg shadow-lg rotate-2 shadow-orange-600/20">
-          <svg viewBox="0 0 24 24" className="w-7 h-7 text-white -rotate-2" fill="currentColor">
+      <div className="p-8 mb-4 flex flex-col items-center">
+        <div className="w-12 h-12 bg-[#FF6B00] flex items-center justify-center rounded-xl shadow-[0_0_20px_rgba(255,107,0,0.5)] rotate-6 mb-3">
+          <svg viewBox="0 0 24 24" className="w-8 h-8 text-white -rotate-6" fill="currentColor">
             <path d="M12 2L2 22h20L12 2zm0 4.5L18.5 19H5.5L12 6.5z"/>
           </svg>
         </div>
-        <div className="flex flex-col leading-none">
-          <h1 className="text-sm font-black tracking-widest text-white uppercase italic">MR SCREEN</h1>
-        </div>
+        <h1 className="text-[14px] font-black tracking-[0.2em] text-white uppercase italic leading-none">MR SCREEN</h1>
       </div>
 
-      <div className="flex-1 px-4 space-y-8 pb-10 overflow-y-auto">
+      <div className="flex-1 px-4 space-y-8 pb-10 overflow-y-auto custom-scrollbar">
         <div>
-          <Link href="/" className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-[#FF6B00] bg-[#FF6B00]/10 font-bold text-xs transition-all border border-[#FF6B00]/20">
+          <Link href="/" className={`flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-bold transition-all border ${pathname === '/' ? 'bg-[#FF6B00]/10 text-[#FF6B00] border-[#FF6B00]/20' : 'text-zinc-500 border-transparent hover:text-zinc-200'}`}>
             <LayoutGrid className="w-4 h-4" />
             Overview
           </Link>
         </div>
 
         {navGroups.map((group) => (
-          <div key={group.title} className="space-y-1">
-            <h3 className="px-4 text-[9px] font-black text-zinc-500 tracking-[0.2em] mb-4 uppercase">{group.title}</h3>
+          <div key={group.title} className="space-y-1.5">
+            <h3 className="px-4 text-[9px] font-bold text-zinc-600 tracking-[0.25em] mb-4 uppercase">{group.title}</h3>
             {group.items.map((item) => {
               const isActive = pathname === item.href;
               return (
                 <Link
                   key={item.label}
                   href={item.href}
-                  className={`flex items-center gap-4 px-4 py-2 rounded-xl text-[12px] font-medium transition-all group ${isActive ? 'text-white bg-white/5 shadow-inner' : 'text-zinc-500 hover:text-zinc-100'}`}
+                  className={`flex items-center gap-3.5 px-4 py-2.5 rounded-xl text-[12px] font-semibold transition-all ${isActive ? 'text-white bg-white/5 shadow-inner' : 'text-zinc-500 hover:text-zinc-200'}`}
                 >
-                  <item.icon className={`w-4 h-4 transition-colors ${isActive ? 'text-[#FF6B00]' : 'text-zinc-600 group-hover:text-zinc-300'}`} />
+                  <item.icon className={`w-4 h-4 ${isActive ? 'text-[#FF6B00]' : 'text-zinc-600'}`} />
                   {item.label}
                 </Link>
               );
@@ -87,18 +85,18 @@ export function Sidebar() {
         ))}
       </div>
 
-      <div className="p-6 space-y-2 mt-auto border-t border-white/5 bg-[#09090b]">
-        <div className="flex items-center justify-between px-4 py-2.5 rounded-xl bg-[#121214] border border-white/5 group cursor-pointer hover:bg-white/[0.02] transition-all">
-          <div className="flex items-center gap-2.5">
-            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+      <div className="p-6 mt-auto border-t border-white/5 bg-[#09090b]">
+        <div className="flex items-center justify-between px-4 py-3 rounded-xl bg-[#121214] border border-white/5 mb-4 shadow-2xl">
+          <div className="flex items-center gap-3">
+            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse shadow-[0_0_10px_#22c55e]"></span>
             <div className="flex flex-col">
-              <span className="text-[10px] font-black text-zinc-200 uppercase leading-none">System Status</span>
-              <span className="text-[8px] font-bold text-zinc-600 uppercase mt-0.5 tracking-tighter">All Systems Operational</span>
+              <span className="text-[10px] font-black text-zinc-100 uppercase leading-none tracking-tight">System Status</span>
+              <span className="text-[8px] font-bold text-zinc-600 uppercase mt-0.5">All Systems Operational</span>
             </div>
           </div>
-          <ChevronRight className="w-3 h-3 text-zinc-700" />
+          <ChevronRight className="w-3.5 h-3.5 text-zinc-700" />
         </div>
-        <button className="flex items-center gap-4 px-4 py-3 text-[11px] font-bold text-zinc-500 hover:text-zinc-100 transition-colors w-full uppercase tracking-widest leading-none">
+        <button className="flex items-center gap-4 px-4 py-2 text-[11px] font-bold text-zinc-500 hover:text-zinc-100 transition-colors w-full uppercase tracking-widest leading-none">
           <LayoutPanelLeft className="w-4 h-4 rotate-180" />
           Collapse
         </button>
