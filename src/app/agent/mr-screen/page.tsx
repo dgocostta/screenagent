@@ -65,26 +65,28 @@ export default function WhatsAppAgent() {
           <h1 className="font-bold text-sm">MR Screen AI</h1>
           <p className="text-[10px] text-white/80">Online</p>
         </div>
-        <MoreVertical className="w-5 h-5" />
+        <div className="flex items-center gap-4">
+          <MoreVertical className="w-5 h-5" />
+        </div>
       </header>
 
       <div 
         ref={scrollRef}
-        className="flex-1 overflow-y-auto p-4 space-y-3 bg-slate-200 dark:bg-[#0b141a]"
+        className="flex-1 overflow-y-auto p-4 space-y-3 bg-[#e5ddd5] dark:bg-[#0b141a]"
       >
         {messages.map((msg) => (
           <div 
             key={msg.id} 
             className={cn(
-              "max-w-[85%] rounded-lg p-2.5 shadow-sm relative text-[13.5px]",
+              "max-w-[85%] rounded-lg p-2.5 shadow-sm relative text-[13.5px] flex flex-col",
               msg.sender === "bot" 
                 ? "bg-white dark:bg-[#202c33] self-start rounded-tl-none text-gray-800 dark:text-[#e9edef]" 
-                : "bg-[#d9fdd3] dark:bg="#005c4b] self-end rounded-tr-none text-gray-800 dark:text-[#e9edef] ml-auto"
+                : "bg-[#d9fdd3] dark:bg-[#005c4b] self-end rounded-tr-none text-gray-800 dark:text-[#e9edef] ml-auto"
             )}
           >
             <p className="whitespace-pre-wrap">{msg.text}</p>
-            <div className="flex items-center justify-end gap-1 mt-1">
-              <span className="text-[9px] text-gray-400 uppercase">{msg.time}</span>
+            <div className="flex items-center justify-end gap-1 mt-1 self-end">
+              <span className="text-[9px] text-gray-400 uppercase leading-none">{msg.time}</span>
               {msg.sender === "user" && <CheckCheck className="w-3 h-3 text-[#53bdeb]" />}
             </div>
           </div>
