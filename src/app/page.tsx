@@ -1,5 +1,5 @@
-import { Sidebar } from "@/components/Sidebar";
-import { ThemeToggle } from "@/components/ThemeToggle";
+import { Sidebar } from "../components/Sidebar";
+import { ThemeToggle } from "../components/ThemeToggle";
 import { Users, ShoppingBag, MessageCircle, ArrowUpRight } from "lucide-react";
 
 const stats = [
@@ -23,7 +23,6 @@ export default function Dashboard() {
         </header>
 
         <div className="p-8 space-y-8">
-          {/* Stats Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {stats.map((stat) => (
               <div key={stat.label} className="bg-card border border-border p-6 rounded-xl">
@@ -44,7 +43,6 @@ export default function Dashboard() {
             ))}
           </div>
 
-          {/* Recent Activity / Charts Placeholder */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div className="bg-card border border-border p-6 rounded-xl h-96">
               <h3 className="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">Agent Conversations</h3>

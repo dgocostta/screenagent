@@ -1,7 +1,7 @@
 "use client";
 
-import { Sidebar } from "@/components/Sidebar";
-import { ThemeToggle } from "@/components/ThemeToggle";
+import { Sidebar } from "../../components/Sidebar";
+import { ThemeToggle } from "../../components/ThemeToggle";
 import { Search, Filter, Plus, Warehouse, Edit2, Trash2, ExternalLink } from "lucide-react";
 import { useState } from "react";
 
