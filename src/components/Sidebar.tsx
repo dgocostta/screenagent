@@ -47,11 +47,13 @@ export function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="w-[280px] h-screen bg-[#09090b] flex flex-col border-r border-white/5 shrink-0 overflow-hidden">
+    <aside className="w-[280px] h-screen bg-[#09090b] flex flex-col border-r border-white/5 shrink-0 overflow-hidden font-sans">
       <div className="p-8 mb-4">
         <div className="flex items-center gap-4">
           <div className="w-10 h-10 bg-[#FF6B00] flex items-center justify-center rounded-lg shadow-lg rotate-3 shadow-orange-600/30">
-            <span className="text-white font-black text-2xl italic tracking-tighter -rotate-3">M</span>
+            <svg viewBox="0 0 24 24" className="w-6 h-6 text-white -rotate-3" fill="currentColor">
+              <path d="M12 2L2 22h20L12 2zm0 4.5L18.5 19H5.5L12 6.5z"/>
+            </svg>
           </div>
           <div className="flex flex-col">
             <h1 className="text-sm font-black tracking-widest text-white uppercase italic leading-none">MR SCREEN</h1>
@@ -59,9 +61,9 @@ export function Sidebar() {
         </div>
       </div>
 
-      <div className="flex-1 px-6 space-y-9 pb-10 overflow-y-auto">
+      <div className="flex-1 px-6 space-y-9 pb-10 overflow-y-auto custom-scrollbar">
         <div>
-          <Link href="/" className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-[#FF6B00] bg-[#FF6B00]/10 font-bold text-sm border border-orange-500/10 transition-all">
+          <Link href="/" className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-[#FF6B00] bg-[#FF6B00]/10 font-bold text-sm transition-all border border-orange-500/10">
             <LayoutGrid className="w-4 h-4" />
             Overview
           </Link>

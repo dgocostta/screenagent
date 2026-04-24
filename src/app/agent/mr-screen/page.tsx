@@ -74,17 +74,17 @@ export default function WhatsAppAgent() {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-[#efeae2] dark:bg-[#0b141a]">
+    <div className="flex flex-col h-screen bg-[#efeae2] dark:bg-[#0b141a] font-sans">
       <header className="bg-[#075e54] dark:bg-[#202c33] p-3 flex items-center gap-3 text-white shadow-md z-10">
         <ChevronLeft className="w-6 h-6" />
-        <div className="w-10 h-10 rounded-full bg-orange-600 flex items-center justify-center font-bold text-xs text-white">MS</div>
+        <div className="w-10 h-10 rounded-full bg-orange-600 flex items-center justify-center font-bold text-xs text-white shadow-lg">MS</div>
         <div className="flex-1">
           <h1 className="font-bold text-[15px]">MR Screen AI</h1>
           <p className="text-[11px] text-white/70">Online</p>
         </div>
         <MoreVertical className="w-5 h-5 text-white/80" />
       </header>
-      <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 space-y-4 bg-zinc-200 dark:bg-[#0b141a]">
+      <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 space-y-4 bg-[#e5ddd5] dark:bg-[#0b141a]">
         {messages.map((msg) => (
           <div key={msg.id} className="flex flex-col">
             <div className={`max-w-[85%] rounded-xl px-3 py-2 shadow-sm relative text-[14px] ${msg.sender === "bot" ? "bg-white dark:bg-[#202c33] self-start rounded-tl-none text-black dark:text-white" : "bg-[#d9fdd3] dark:bg-[#005c4b] self-end rounded-tr-none ml-auto text-black dark:text-white"}`}>
@@ -108,7 +108,7 @@ export default function WhatsAppAgent() {
       </div>
       <footer className="bg-[#f0f2f5] dark:bg-[#202c33] p-3 flex items-center gap-3">
         <input type="text" placeholder="Type a message" className="flex-1 bg-white dark:bg-[#2a3942] rounded-full px-4 py-2 text-sm outline-none text-black dark:text-white" value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={(e) => e.key === "Enter" && handleSend()} />
-        <button onClick={handleSend} className="w-12 h-12 bg-[#00a884] rounded-full text-white shadow-lg flex items-center justify-center"><Send className="w-5 h-5" /></button>
+        <button onClick={handleSend} className="w-12 h-12 bg-[#00a884] rounded-full text-white shadow-lg flex items-center justify-center shrink-0 active:scale-95 transition-transform"><Send className="w-5 h-5" /></button>
       </footer>
     </div>
   );
